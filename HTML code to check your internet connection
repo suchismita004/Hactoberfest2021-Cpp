@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detect Internet Connection</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+      .container {
+        width: 320px;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+      }
+      p {
+        line-height: 1.8;
+        letter-spacing: 0.2px;
+        font-size: 16px;
+        font-weight: 400;
+        -webkit-animation: scale-up 2s infinite;
+                animation: scale-up 2s infinite;
+      }
+      @-webkit-keyframes scale-up {
+        50% {
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+      }
+      @keyframes scale-up {
+        50% {
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+      }
+      #message {
+        width: 90%;
+        font-size: 22px;
+        font-weight: 600;
+        padding: 30px 10px;
+        border-radius: 8px;
+        margin: 30px auto 50px auto;
+      }
+      a {
+        background-color: #101010;
+        display: block;
+        color: #ffffff;
+        padding: 15px 0;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>
+        Try switching your internet connection ON and OFF to test this code.
+      </p>
+      <h1 id="message"></h1>
+      
+      
+    </div>
+    <script>
+      let message = document.getElementById("message");
+
+      let messageOnline = () => {
+        message.textContent = "Internet Connection Available";
+        message.style.cssText = "background-color: #E7F6D5; color: #689F38";
+      };
+      let messageOffline = () => {
+        message.textContent = "No Internet Connection";
+        message.style.cssText = "background-color: #FFDDE0; color: #D32F2F";
+      };
+
+      if (window.navigator.onLine) {
+        messageOnline();
+      } else {
+        messageOffline();
+      }
+      window.addEventListener("online", messageOnline);
+      window.addEventListener("offline", messageOffline);
+    </script>
+  </body>
+</html>
